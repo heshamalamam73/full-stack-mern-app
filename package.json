@@ -1,0 +1,28 @@
+{
+  "name": "fullstack-mern",
+  "version": "1.0.0",
+  "description": "full stack app useing mern   ",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "concurrently": "^4.0.1",
+    "express": "^4.16.4",
+    "mongoose": "^5.3.6",
+    "nodemon": "^1.18.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heshamalamam73/full-stack-mern-app.git"
+  },
+  "author": "momuzio2018",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/heshamalamam73/full-stack-mern-app/issues"
+  },
+  "homepage": "https://github.com/heshamalamam73/full-stack-mern-app#readme"
+}
