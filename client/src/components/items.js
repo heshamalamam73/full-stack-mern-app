@@ -21,14 +21,27 @@ import {
     
     render() {
         const {items} = this.props.item;
-
+   
         return (
+            <div className='items'> 
+                 {items.map(({id,title,img,ingredients}) =>(
+                                    <Card>
+                                        <CardBody>
+                                            <CardImg src= {img}>
+                                                 </CardImg>
+                                            <CardTitle> 
+                                                <h1>{title}</h1>
+                                            </CardTitle>
+                                                <CardSubtitle>
+                                                <ul>
+                                                    {ingredients.map(ingr =>(<li>{ingr}</li> ))}
+                                                </ul>
+                                                 </CardSubtitle>
+                                        </CardBody>
+                                    </Card>
 
-            <div >
-            {items.map(({id,title,img,ingredients}) =>(
-                <h1 key={id}>{title}</h1>
-            ))}           
-            </div>
+                 ))}
+        </div>   
         
         
         );
@@ -45,7 +58,7 @@ import {
         item : state.item
     });
 
-export default connect(mapStateToProps ,{getItems})(Items) ;
+export default connect(mapStateToProps ,{ getItems })( Items) ;
 
 
 
