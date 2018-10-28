@@ -1,4 +1,5 @@
 import React,{Component} from 'react';
+import propTypes from 'prop-types'
 import { 
     Container,
     Row,
@@ -10,51 +11,41 @@ import {
     CardTitle, 
     CardSubtitle, 
     Button } from 'reactstrap';
+    import { connect } from 'react-redux';
+    import {getItems} from '../acions/itemactions'
 
-
-
-  class Items  extends Component {
-    state = {
-        items: [
-            {
-                title:'margrita',
-                ingredients :['pomodro','mozzarella'],
-                img:"https://images.pexels.com/photos/724216/pexels-photo-724216.jpeg?auto=compress&cs=tinysrgb&h=350"
-            },
-            {
-                title:'ortolana',
-                ingredients :['pomodro','mozzarella','zuccina','peprone','melanzana'],
-                img:'https://images.pexels.com/photos/263041/pexels-photo-263041.jpeg?auto=compress&cs=tinysrgb&h=350'
-            },
-            {
-                title:'funghi',
-                ingredients :['pomodro','mozzarella','funghi'],
-                img:'https://images.pexels.com/photos/16495/food-pizza-fast-food.jpg?auto=compress&cs=tinysrgb&h=350'
-            }    
-        ]
-    }
- 
+  class Items extends Component {
+      componentDidMount(){
+          this.props.getItems();
+      }
+    
     render() {
-        const item = this.state.items.map(item=>(
-            <div>
-          {item.title}
-
-            </div>
-                
-        ))
-     
-       
+        const {items} = this.props.item;
 
         return (
-            <div>
-                {item}
+
+            <div >
+            {items.map(({id,title,img,ingredients}) =>(
+                <h1 key={id}>{title}</h1>
+            ))}           
             </div>
         
         
-        )
-}}
+        );
 
-export default Items ;
+
+    }
+}
+
+ Items.propType ={
+     getItems :propTypes.func.isRequired,
+     item : propTypes.object.isRequired
+ }
+    const mapStateToProps = (state) => ({
+        item : state.item
+    });
+
+export default connect(mapStateToProps ,{getItems})(Items) ;
 
 
 
