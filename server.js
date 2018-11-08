@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const Port = process.env.Port|| 5000;
+
 const items = require('./routes/api/items');
 const path = require('path');
 
@@ -32,9 +32,9 @@ mongoose
     });
   }
   
+  const port = process.env.PORT || 5000;
 
-
-app.listen(Port) ;
+  app.listen(port, () => console.log(`Server started on port ${port}`));
 
 
 
