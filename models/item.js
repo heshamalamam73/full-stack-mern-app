@@ -17,7 +17,7 @@ const ItemSchema = new Schema({
         
        
     },
-    img :{
+    img:{
         type : String,
         required :true
     },
