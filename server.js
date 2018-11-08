@@ -34,7 +34,7 @@ mongoose
   
 
 
-app.listen(Port, ()=> console.log(`server started on port ${Port} `)) ;
+app.listen(Port) ;
 
 
 
