@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const Port = process.env.Port|| 5000;
 const items = require('./routes/api/items');
+const path = require('path');
+
 // db config 
 const db =require('./config/keys').mongoUrl;
 
@@ -20,8 +22,19 @@ mongoose
     //use routes 
     app.use('/api/items',items);
 
+    // Serve static assets if in production
+    if (process.env.NODE_ENV === 'production') {
+    // Set static folder
+    app.use(express.static('client/build'));
+  
+    app.get('*', (req, res) => {
+      res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    });
+  }
+  
 
-app.listen(Port, ()=> console.log('server started on port ${Port} ')) ;
+
+app.listen(Port, ()=> console.log(`server started on port ${Port} `)) ;
 
 
 
